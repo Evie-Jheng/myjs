@@ -1,0 +1,33 @@
+
+<script>
+    // let var1 = 10;
+    // let var2 = 0;
+    // document.write(var1 / var2);  //print out "Infinity"  表示0不是0  是趨近於0的值
+
+    // var1 = 0;
+    // var2 = 0;
+    // document.write(var1 / var2);//print out "NaN"
+
+
+
+    // let score = prompt("請輸入成績:");
+    let score = parseInt(Math.random()*100) + 1;
+    document.write(`score = ${score} <br> result:`);
+
+    // 判斷成績等級，90以上是A 80以上是B 70以上是C 60以上為D 小於60為E
+    if (score >= 90){
+        document.write("A");
+    }else if(score >= 80){
+        document.write("B");
+    }else if(score >= 70){
+        document.write("C");
+        score = 50;
+    }else if(score >= 60){
+        document.write("D");
+    }else　{
+        document.write("E");
+    }
+    document.write("<hr>");
+    document.write(score);
+
+</script>

@@ -1,0 +1,28 @@
+<table border="1" width="100%">
+    <script>
+        let row = 5; //行列數
+        let start = 2; //起始的數字
+        let nTd = 3; //欄數
+
+        for (let k = 0; k < row; k++) {  // 產生列數
+            document.write("<tr>");
+            for (let j = start; j < (start + nTd); j++) {
+                let newj = j + k * nTd;
+                let isPink
+                if(nTd % 2 == 0){
+                    isPink = (newj + k) % 2 == 0;
+                }else{
+                    isPink = newj % 2 == 0;
+                }
+                document.write("<td bgcolor = " + (isPink?"yellow":"pink") + ">");
+
+                for (let i = 1; i < 10; i++) {
+                    let r = newj * i;
+                    document.write(`${newj} * ${i} = ${r} <br>`);
+                }
+                document.write("</td>");
+            }
+            document.write("</tr>");
+        }
+    </script>
+</table>

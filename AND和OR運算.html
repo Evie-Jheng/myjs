@@ -1,0 +1,32 @@
+<script>
+    let a = 10, b = 3;
+
+    //OK: 9 / 4
+    if(a-- >= 10 && b++ <= 3){
+        document.write(`OK: ${a} / ${b}`);
+    }else{
+        document.write(`XX: ${a} / ${b}`);
+    }
+
+    //XX: 8 / 4  ， 會先算--a 但因 --a >= 10 已經為false，故沒有做++b
+    if(--a >= 10 && ++b <= 3){
+        document.write(`OK: ${a} / ${b}`);
+    }else{
+        document.write(`XX: ${a} / ${b}`);
+    }
+
+    //XX: 7 / 5  ， 會先算--a  即使前面這個為false 也會做 ++b ， 只有一個&，是指前後去做AND運算
+    if(--a >= 10 & ++b <= 3){
+        document.write(`OK: ${a} / ${b}`);
+    }else{
+        document.write(`XX: ${a} / ${b}`);
+    }
+
+    //XX: XX: 7 / 5
+    if(--a >= 10 || ++b <= 3){
+        document.write(`OK: ${a} / ${b}`);
+    }else{
+        document.write(`XX: ${a} / ${b}`);
+    }
+
+</script>

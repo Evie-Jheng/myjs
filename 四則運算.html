@@ -1,0 +1,39 @@
+<input type="number" id="x">
+<select id="cal">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+<input type="number" id="y">
+<input type="button" value="=" onclick="doCal()">
+<span id="result">結果</span>
+
+<script>
+    function doCal() {
+        let x = parseInt(document.getElementById("x").value);
+        let y = parseInt(document.getElementById("y").value);
+        let calvalue = document.getElementById("cal").value;
+        let spanResult = document.getElementById("result");
+        let result;
+
+        switch (calvalue) {
+            case "+":
+                result = x + y;
+                break;
+            case "-":
+                result = x - y;
+                break;
+            case "*":
+                result = x * y;
+                break;
+            case "/":
+                let quotient = parseInt(x / y);
+                let remainder = x % y;
+                result = quotient + "......" + remainder;
+                break;
+        }
+
+        spanResult.innerHTML = result;
+    }
+</script>

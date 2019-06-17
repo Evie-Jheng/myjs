@@ -1,0 +1,17 @@
+<script>
+    /*
+        for(初始化;判斷是否執行;for做完執行..)
+    */
+    function myinit() {
+        document.write("init<br>")
+    }
+
+    function drawline() {
+        document.write("<hr>")
+    }
+    let i = 0;
+    for (myinit(); i < 10; drawline()) {
+        document.write(i++ + "<br>");
+    }
+    document.write("<hr>" + i);  // error :　i is not defined
+</script>
