@@ -13,27 +13,27 @@
     function doCal() {
         let x = parseInt(document.getElementById("x").value);
         let y = parseInt(document.getElementById("y").value);
-        let calvalue = document.getElementById("cal").value;
+        let calvalue = document.getElementById("cal").selectedIndex;
         let spanResult = document.getElementById("result");
         let result;
+        // alert(typeof(calvalue))  switch 要先知道型別是什麼
 
         switch (calvalue) {
-            case "+":
+            case 0:
                 result = x + y;
                 break;
-            case "-":
+            case 1:
                 result = x - y;
                 break;
-            case "*":
+            case 2:
                 result = x * y;
                 break;
-            case "/":
+            case 3:
                 let quotient = parseInt(x / y);
                 let remainder = x % y;
                 result = quotient + "......" + remainder;
                 break;
         }
-
         spanResult.innerHTML = result;
     }
 </script>
