@@ -1,0 +1,16 @@
+<script>
+    function calcSum(num){
+        let count = 1;
+        let total = 0;
+        while(count <= num){
+            total += count;
+            count ++;
+        }
+        document.getElementById("result").innerHTML = total;
+    }
+</script>
+
+1 + 2 + ... +
+<input type="number" id="n">
+<input type="button" value="=" onclick="calcSum(document.getElementById('n').value)">
+<span id="result"></span>
