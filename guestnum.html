@@ -1,0 +1,58 @@
+<script src="bradapi.js"></script>
+<script>
+    let answer = createAnswer(3);
+    let log = '';
+    let time = 0;
+
+    function startgame(){
+        let n = document.getElementById("count").value;
+        answer = createAnswer(parseInt(n));
+        console.log(`answer: ${answer}`);
+    }
+
+    function doGuess() {
+        time++;
+        let guess = document.getElementById('guess');
+        let result = checkAB(answer, guess.value);
+        log += time + "." + guess.value + "  ==>  " + result + "<br>"
+        document.getElementById("log").innerHTML = log;
+        guess.value = '';
+        guess.focus;
+        if (result == "3A0B") {
+            alert("恭喜答對!");
+            reset();
+        } else if (time == 10) {
+            alert("Loser: answer is " + answer);
+            reset();
+        }
+    }
+
+    function reset() {
+        if (!confirm('重新遊戲?')) return;
+
+        startgame();
+        answer = '';
+        log = '';
+        document.getElementById('log').innerHTML = log;
+        document.getElementById('guess').value = '';
+        document.getElementById('guess').focus();
+        time = 0;
+    }
+</script>
+
+<h1>Guess Number Game</h1>
+<hr>
+請先選擇要猜幾個數字:
+<select id="count">
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+<input type="button" onclick="startgame()" value="開始遊戲">
+<br><br>
+<input type="number" id="guess">
+<input type="button" onclick="doGuess()" value="Guess">
+<input type="button" onclick="reset()" value="Reset">
+<hr>
+
+<div id="log"></div>

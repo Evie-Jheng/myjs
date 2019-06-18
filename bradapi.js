@@ -36,13 +36,13 @@ function checkTWId(id) {
     return ret;
 }
 
-
-
-
+/*
+    猜數字-產生1組亂數
+*/
 function createAnswer(n = 3) {
     let poker = [];
-    for (let i = 0; i < 10; i++) {
-        poker[i] = i;
+    for (let i = 1; i < 10; i++) {
+        poker[i-1] = i; //1~9
     }
     //打亂數字
     for (let i = poker.length - 1; i > 0; i--) {
@@ -52,4 +52,26 @@ function createAnswer(n = 3) {
     let ret = '';
     for (let i = 0; i < n; i++) ret += poker[i];
     return ret;
+}
+
+
+/*
+    驗證使用者輸入的數字
+*/
+function checkAB(ans, gus){
+    let a = 0;
+    let b = 0;
+    for(let i = 0; i < gus.length; i++){
+        if(gus.charAt(i) == ans.charAt(i)){
+            a++;
+        }else{
+            let countMatch = ans.match(gus.charAt(i));
+            if(countMatch != null){
+                b++;
+            }
+        }
+    }
+
+    return a + "A" + b + "B";
+    
 }
