@@ -1,0 +1,38 @@
+<script>
+    function sayYa(name) {
+        document.write(`Ya! ${name} <br>`);
+    }
+    sayYa("Evie");
+    sayYa("Penny");
+
+    let names = ["Mando", "Weedy", "Huen-wen", "Jessy"];
+    for (let n of names) {
+        sayYa(n);
+    }
+    document.write("<hr>");
+
+    //呼叫時沒有帶參數，可以設參數預設值
+    function sayYaV2(na = 'World') {
+        document.write(`Ya! ${na} <br>`);
+    }
+    sayYaV2();
+    document.write("<hr>");
+
+    
+    //不指定參數
+    function sayYaV3(...namee) {
+        // document.write(typeof namee + Array.isArray(namee) + "<br>");
+        for(let n of namee){
+            document.write(`Ya! ${n} <br>`);
+        }
+    }
+    sayYaV3();
+    sayYaV3('AE');
+    sayYaV3('A', 'B', 'C');
+    document.write("<hr>");
+
+    let f1 = function(x, y){
+        document.write(`x + y = ${x + y}`);
+    };
+    f1(10,20);
+</script>
