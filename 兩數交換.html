@@ -1,0 +1,29 @@
+<script>
+
+    /*
+    兩數交換 
+    */
+
+    //方法一:
+    let a = 10, b = 3;
+    let temp = a;
+    a = b;
+    b = temp;
+    document.write(`a: ${a} , b: ${b} <br>`);
+
+
+    //方法二:
+    let c = 10, d = 7;
+    c = c + d;
+    d = c - d;
+    c = c - d;
+    document.write(`c: ${c} , d: ${d} <br>`);
+
+
+    //方法三:
+    let e = 4, f = 3, g = 8;
+    [e, f, g] = [g, f, e];
+    document.write(`e: ${e} , f: ${f}, g: ${g} <br>`);
+
+
+</script>

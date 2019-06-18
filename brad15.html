@@ -1,0 +1,15 @@
+<script>
+    let a = [1,2,3,4,5];
+    a[10] = 11;
+
+    //沒有值的會印出undefined
+    for(let i = 0; i < a.length; i++){
+        document.write(a[i] + "<br>");
+    }
+    document.write("<hr>");
+
+    //會將有值的印出來
+    for(let i in a){
+        document.write(a[i] + "<br>");
+    }
+</script>

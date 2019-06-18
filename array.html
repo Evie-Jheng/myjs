@@ -1,0 +1,89 @@
+<script>
+    // let a = [1,2,3,4];
+    // document.write(typeof(a) + "<br>");  // print out object
+    // document.write(typeof(a[4])+ "<br>"); //print out undefined
+
+    // a[4] = 5;
+    // document.write(typeof(a[4])+ "<br>");
+
+    // a[100] = 34;
+    // document.write(`a[100]: ${a[100]}, a.length: ${a.length} <br>`);
+
+
+
+    /*
+        用for撰寫，1個骰子骰100次，計算每個點數出現的次數
+    */
+    // let num1 = 0;
+    // let num2 = 0;
+    // let num3 = 0;
+    // let num4 = 0;
+    // let num5 = 0;
+    // let num6 = 0;
+
+    // for (let i = 0; i < 100; i++) {
+    //     let rand = parseInt(Math.random() * 6) + 1;
+    //     document.write(rand + " ");
+
+    //     switch (rand) {
+    //         case 1:
+    //             num1++;
+    //             break;
+    //         case 2:
+    //             num2++;
+    //             break;
+    //         case 3:
+    //             num3++;
+    //             break;
+    //         case 4:
+    //             num4++;
+    //             break;
+    //         case 5:
+    //             num5++;
+    //             break;
+    //         case 6:
+    //             num6++;
+    //             break;
+    //     }
+    // }
+
+
+    // document.write(`<br> 1 出現: ${num1} 次`);
+    // document.write(`<br> 2 出現: ${num2} 次`);
+    // document.write(`<br> 3 出現: ${num3} 次`);
+    // document.write(`<br> 4 出現: ${num4} 次`);
+    // document.write(`<br> 5 出現: ${num5} 次`);
+    // document.write(`<br> 6 出現: ${num6} 次`);
+
+
+
+
+
+    /*
+        用array改寫
+    */
+    // let p = [0, 0, 0, 0, 0, 0, 0];
+    // for (let i = 0; i < 100; i++) {
+    //     let rand = parseInt(Math.random() * 6) + 1;
+    //     p[rand]++;
+    // }
+
+    // for (let i = 1; i < p.length; i++) {
+    //     document.write(`${i} : ${p[i]} times <br>`);
+    // }
+
+
+
+    /*
+        將4,5,6出現的比率提高2倍
+    */
+    let p = [0, 0, 0, 0, 0, 0, 0];
+    for (let i = 0; i < 1000000; i++) {
+        let rand = parseInt(Math.random() * 9) + 1;
+        p[rand <= 6 ? rand : rand - 3]++;
+    }
+
+    for (let i = 1; i < p.length; i++) {
+        document.write(`${i} : ${p[i]} times <br>`);
+    }
+</script>

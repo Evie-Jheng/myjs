@@ -1,0 +1,46 @@
+<script>
+    let poker = [];
+
+    //依序排放撲克牌
+    for (let i = 0; i < 52; i++) {
+        poker[i] = i;
+    }
+
+    //洗牌
+    for (let i = poker.length - 1; i > 0; i--) {
+        let rand = parseInt(Math.random() * (i + 1));
+        //數字交換
+        [poker[i], poker[rand]] = [poker[rand], poker[i]];
+    }
+
+    //發牌
+    let player = [[], [], [], []];
+    for (let i = 0; i < poker.length; i++) {
+        player[i % 4][parseInt(i / 4)] = poker[i];
+    }
+</script>
+
+<!-- 印出驗證 -->
+<table width=50%; border="1" ; style="border-collapse: collapse;">
+    <script>
+        let suits = ['&spades;','&hearts;','&diams;','&clubs;'];
+        let nums = ['A',2,3,4,5,6,7,8,9,10,'J','Q','K'];
+
+        for (let i of player) {
+            player.sort(function(a,b){
+                return a-b;
+            });
+            document.write("<tr>");
+            for (let card of i) {
+                if(parseInt(card/13) == 1 || parseInt(card/13) == 2){
+                    document.write("<td style = 'color:red;'>");
+                }else{
+                    document.write("<td style = 'color:black'>");
+                }
+                document.write(suits[parseInt(card/13)] + nums[card%13]);
+                document.write("</td>");
+            }
+            document.write("</td>");
+        }
+    </script>
+</table>
