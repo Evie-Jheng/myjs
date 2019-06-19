@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PrimeNumber</title>
+    <style>
+        table {
+            align-content: center;
+            text-align: center;
+            border-collapse: collapse;
+            width: 100%;
+            height: 600px;
+        }
+        span {
+            font-size: 20px;
+        }
+        #prime {
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="bradapi.js"></script>
+    <h1>1~100質數表<span>(標示<span id="prime">紅色</span>為質數)</span>:</h1>
+    <table border="1">
+        <script>
+            let n = 1;
+            for (let j = 1; j <= 20; j++) {
+                document.write("<tr>");
+                for (let i = 1; i <= 5; i++) {
+                    if (judgePrime(parseInt(n))) {
+                        document.write("<td style='color:red'>");
+                    } else {
+                        document.write("<td style='color:black'>");
+                    }
+                    document.write(n);
+                    document.write("</td>");
+                    n++;
+                }
+                document.write("</tr>");
+            }
+        </script>
+    </table>
+</body>
+
+</html>
