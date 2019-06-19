@@ -98,10 +98,9 @@ function judgePrime(num) {
                 return false;
                 break;
             }
-            return true;
         }
+        return true;
     }
-    return false;
 }
 
 
@@ -111,7 +110,6 @@ function judgePrime(num) {
 function transferNumber(num){
     let result = "";
     let transfer = ["零","壹","貳","參","肆","伍","陸","柒","捌","玖","拾"];
-    
     
     for(let i = 0; i < num.length; i++){
         let str = num.charAt(i);
