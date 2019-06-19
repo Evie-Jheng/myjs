@@ -13,9 +13,10 @@ function checkTWId(id) {
     let ret = false;
 
     if (result != null) {
-        let letter = 'ABCDEFGHJKLMNPQTUVXYWZIO';
+        let letter = 'ABCDEFGHJKLMNPQRSTUVXYWZIO';
         let c12 = id.substr(0, 1);
         let n12 = letter.indexOf(c12) + 10;
+        console.log(`n12: ${n12}`);
         let n1 = parseInt(n12 / 10);
         let n2 = n12 % 10;
         let n3 = parseInt(id.substr(1, 1));
@@ -30,7 +31,7 @@ function checkTWId(id) {
 
         let sum = n1 * 1 + n2 * 9 + n3 * 8 + n4 * 7 + n5 * 6 +
             n6 * 5 + n7 * 4 + n8 * 3 + n9 * 2 + n10 * 1 + n11 * 1;
-
+        console.log(`sum: ${sum}`);
         ret = sum % 10 == 0;
     }
     return ret;
