@@ -77,14 +77,22 @@ function checkAB(ans, gus) {
 
 }
 
-
+/*
+    判斷是不是質數
+*/
 function judgePrime(num) {
     let isPrime = false;
+    
+    //若num 是 0 和 1 直接return false 
     if (num == 0 || num == 1) {
         return false;
     } else if (num == 2) {
         return true;
     } else {
+        /*num除以2,3,4..... 直到num本身，
+          若都沒有可以整除的數，
+          表示num為質數
+        */
         for (let i = 2; i < num; i++) {
             if (num % i == 0) {
                 return false;
