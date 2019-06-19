@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>身分證字號產生器</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>身分證字號產生器</h1>
+    <hr>
+    <div id="kk">
+        <span>性別:</span>
+        <input type="radio" value="1" id="input_boy" name="gender">
+        <label for="input_boy">男</label>
+        <input type="radio" value="2" id="input_girl" name="gender">
+        <label for="input_girl">女</label>
+    </div>
+    <br>
+    <span>地區:</span>
+    <select id="place">
+        <option value="A">臺北市</option>
+        <option value="B">臺中市</option>
+        <option value="C">基隆市</option>
+        <option value="D">臺南市</option>
+        <option value="E">高雄市</option>
+        <option value="F">新北市</option>
+        <option value="G">宜蘭縣</option>
+        <option value="H">桃園市</option>
+        <option value="I">嘉義市</option>
+        <option value="J">新竹縣</option>
+        <option value="K">苗栗縣</option>
+        <option value="M">南投縣</option>
+        <option value="N">彰化縣</option>
+        <option value="O">新竹市</option>
+        <option value="P">雲林縣</option>
+        <option value="Q">嘉義縣</option>
+        <option value="T">屏東縣</option>
+        <option value="U">花蓮縣</option>
+        <option value="V">台東縣</option>
+        <option value="W">金門縣</option>
+        <option value="X">澎湖縣</option>
+        <option value="Z">連江縣</option>
+    </select>
+
+    <script src="bradapi.js"></script>
+
+    <input type="button" onclick="doGenerator()" value="Go!">
+    <br>
+    <br>
+    <span>產生結果:</span>
+    <input type="text" id="number">
+
+    <hr>
+
+    <h1>身份證字號驗證</h1>
+    <span>請輸入要驗證的號碼:</span>
+    <input type="text" id="id">
+    <input type="button" onclick="ckId()" value="Check">
+    <br><br>
+    <span>驗證結果:</span>
+    <input type="text" id="result">
+
+    <script>
+        function doGenerator() {
+            //取得表單上性別的選擇
+            let formGenderObj = document.getElementsByName("gender");
+            let formGender = "1";
+
+            if (formGenderObj[1].checked) {
+                formGender = "2";
+            }
+
+            //取得表單上地區的選擇
+            let formPlace = document.getElementById("place").value;
+
+            //將產生的id呈現在網頁上
+            document.getElementById("number").value = generatorID(formGender, formPlace);
+        }
+
+        function ckId() {
+            let id = document.getElementById("id").value;
+            let isRight = checkTWId(id);
+            let result = document.getElementById("result");
+            if (!isRight) {
+                result.value = "驗證失敗";
+            } else {
+                result.value = "驗證成功";
+            }
+        }
+    </script>
+</body>
+
+</html>

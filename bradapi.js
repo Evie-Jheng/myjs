@@ -16,7 +16,6 @@ function checkTWId(id) {
         let letter = 'ABCDEFGHJKLMNPQRSTUVXYWZIO';
         let c12 = id.substr(0, 1);
         let n12 = letter.indexOf(c12) + 10;
-        console.log(`n12: ${n12}`);
         let n1 = parseInt(n12 / 10);
         let n2 = n12 % 10;
         let n3 = parseInt(id.substr(1, 1));
@@ -31,7 +30,6 @@ function checkTWId(id) {
 
         let sum = n1 * 1 + n2 * 9 + n3 * 8 + n4 * 7 + n5 * 6 +
             n6 * 5 + n7 * 4 + n8 * 3 + n9 * 2 + n10 * 1 + n11 * 1;
-        console.log(`sum: ${sum}`);
         ret = sum % 10 == 0;
     }
     return ret;
@@ -107,13 +105,59 @@ function judgePrime(num) {
 /*
     將數字轉成國字
 */
-function transferNumber(num){
+function transferNumber(num) {
     let result = "";
-    let transfer = ["零","壹","貳","參","肆","伍","陸","柒","捌","玖","拾"];
-    
-    for(let i = 0; i < num.length; i++){
+    let transfer = ["零", "壹", "貳", "參", "肆", "伍", "陸", "柒", "捌", "玖", "拾"];
+
+    for (let i = 0; i < num.length; i++) {
         let str = num.charAt(i);
         result += transfer[parseInt(str)];
     }
     return result;
+}
+
+
+/*
+    產生一組身分證字號
+ */
+function generatorID(gender, place) {
+    let letter = 'ABCDEFGHJKLMNPQRSTUVXYWZIO';
+    let placeNum = letter.indexOf(place) + 10;
+    let n1 = parseInt(placeNum / 10);
+    let n2 = placeNum % 10;
+
+    let idNum = [];
+    idNum[0] = n1;
+    idNum[1] = n2;
+    idNum[2] = parseInt(gender);
+
+    //存入7個亂數
+    for (let i = 3; i < 10; i++) {
+        let rand = parseInt(Math.random() * 10);  //0~9
+        idNum[i] = rand;
+    }
+
+    let sum = idNum[0] * 1 +
+    idNum[1] * 9 +
+    idNum[2] * 8 +
+    idNum[3] * 7 +
+    idNum[4] * 6 +
+    idNum[5] * 5 +
+    idNum[6] * 4 +
+    idNum[7] * 3 +
+    idNum[8] * 2 +
+    idNum[9] * 1 
+
+    if(sum % 10 == 0){
+        idNum[10] = 0;
+    }else{
+        idNum[10] = 10 - (sum % 10);
+    } 
+    let str = place;
+
+
+    for(let i = 2; i < idNum.length; i++){
+        str += idNum[i] ;
+    }
+    return str;
 }
