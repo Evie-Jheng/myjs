@@ -82,7 +82,7 @@ function checkAB(ans, gus) {
 */
 function judgePrime(num) {
     let isPrime = false;
-    
+
     //若num 是 0 和 1 直接return false 
     if (num == 0 || num == 1) {
         return false;
@@ -102,4 +102,20 @@ function judgePrime(num) {
         }
     }
     return false;
+}
+
+
+/*
+    將數字轉成國字
+*/
+function transferNumber(num){
+    let result = "";
+    let transfer = ["零","壹","貳","參","肆","伍","陸","柒","捌","玖","拾"];
+    
+    
+    for(let i = 0; i < num.length; i++){
+        let str = num.charAt(i);
+        result += transfer[parseInt(str)];
+    }
+    return result;
 }

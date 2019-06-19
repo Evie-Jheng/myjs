@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="number">
+    <input type="button" value="transfer!" onclick="doTransfer()">
+    &emsp;&emsp;&emsp;
+    <span>result:</span>
+    <span id="tranditional"></span>
+
+    <script src="bradapi.js"></script>
+    <script>
+        function doTransfer(){
+            let num = document.getElementById("number").value;
+            document.getElementById("tranditional").innerHTML = transferNumber(num);
+        }
+    </script>
+</body>
+</html>
