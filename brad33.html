@@ -1,0 +1,58 @@
+<h1 id="head"></h1>
+<hr>
+<canvas id="canvas" width="600" height="600" style="border: 1px solid black"></canvas>
+<input type="button" onclick="clearCanvas()" value="Clear" />
+<input type="button" onclick="moveBall()" value="moveBall">
+
+<script>
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    head.innerHTML = 'Brad Big Company';
+    let ctx = canvas.getContext('2d'); //渲染
+    // ctx.fillStyle = 'rgb(255,0,0)'; //畫紅色
+    // ctx.fillRect(50, 50, 100, 120); //畫矩形
+
+    // ctx.fillStyle = 'rgb(255,255,0,0.5)';
+    // ctx.fillRect(70, 70, 200, 200);
+
+    // //畫無填滿矩形
+    // ctx.strokeStyle = 'rgb(0,0,255)';
+    // ctx.strokeRect(30, 30, 200, 200);
+
+    // ctx.moveTo(75, 50);
+    // ctx.lineTo(50, 10);
+    // ctx.stroke();
+
+    let isDrag = false;
+    canvas.onmouseup = function (e) {
+        isDrag = false;
+    }
+
+    canvas.onmousedown = function (e) {
+        isDrag = true;
+        ctx.strokeStyle = 'rgb(0,0,255)';
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    canvas.onmousemove = function (e) {
+        if (isDrag) {
+            console.log(e.offsetX, e.offsetY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+    }
+
+    let ball = new Image();
+    ball.src = "ball.jpg";
+    ball.onload = function(){
+        ctx.drawImage(ball, 240, 240);
+    }
+
+    function moveBall(){
+        ctx.clearRect(240, 240, 200, 200);
+        ctx.drawImage(ball, 0, 0);
+    }
+</script>

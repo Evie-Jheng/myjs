@@ -161,3 +161,18 @@ function generatorID(gender, place) {
     }
     return str;
 }
+
+
+/**
+ * 
+ * 複製
+ */
+function clone(source){
+    if(typeof(source) != 'Object') return null;
+
+    let target = new Object();
+    for(let attr in source){
+        target[attr] = source[attr];
+    }
+    return target;
+}
