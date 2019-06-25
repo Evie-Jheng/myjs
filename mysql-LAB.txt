@@ -1,0 +1,44 @@
+Q1:
+哪些公司的單品項總金額達到10000
+select c.companyname, o.orderid, od.unitprice*od.quantity*(1-od.discount) as totalprice from `order details` od join orders o on (o.orderid = od.orderid) join customers c on (c.customerid = o.customerid) where od.unitprice* od.quantity*(1-od.discount) > 10000 order by totalprice desc;
+ +----------------------------+---------+--------------------+
+| companyname                | orderid | totalprice         |
++----------------------------+---------+--------------------+
+| Hanari Carnes              |   10981 |              15810 |
+| QUICK-Stop                 |   10865 | 15019.499988220632 |
+| Simons bistro              |   10417 |              10540 |
+| Rattlesnake Canyon Grocery |   10889 |              10540 |
++----------------------------+---------+--------------------+
+4 rows in set (0.007 sec)
+
+ 
+Q2:哪個城市的賣出金額  大->小(前三名)
+MariaDB [northwind]> select c.city,od.unitprice*od.quantity as total from customers c join orders o on(o.customerid = c.customerid) join `order details` od on(od.orderid = o.orderid) group by c.city order by total desc limit 0,5;
++------------+-----------+
+| city       | total     |
++------------+-----------+
+| Charleroi  | 2592.0000 |
+| Montreal   | 2000.0000 |
+| Anchorage  | 1250.0000 |
+| Caracas    |  990.0000 |
+| Strasbourg |  936.0000 |
++------------+-----------+
+5 rows in set (0.213 sec)
+
+
+Q3:哪個業務銷售的金額最多
+MariaDB [northwind]> select e.firstname,e.lastname,od.unitprice*od.quantity as total from `order details` od join orders o on(o.orderid = od.orderid) join employees e on(e.employeeid = o.employeeid) group by e.firstname order by total desc;
++-----------+-----------+----------+
+| firstname | lastname  | total    |
++-----------+-----------+----------+
+| Andrew    | Fuller    | 936.0000 |
+| Nancy     | Davolio   | 760.0000 |
+| Anne      | Dodsworth | 304.0000 |
+| Robert    | King      | 240.0000 |
+| Laura     | Callahan  | 204.0000 |
+| Steven    | Buchanan  | 168.0000 |
+| Michael   | Suyama    | 167.4000 |
+| Janet     | Leverling | 100.8000 |
+| Margaret  | Peacock   |  77.0000 |
++-----------+-----------+----------+
+9 rows in set (0.134 sec)
